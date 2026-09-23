@@ -42,20 +42,26 @@ export default function Navbar() {
           })}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-6 text-sm font-medium text-white">
           <Link
             href="/my-plan"
-            className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-black"
-            aria-label="Today's plan count"
+            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            aria-label={`Plan, ${plan.length} workouts`}
           >
-            Plan {plan.length}
+            <span>Plan</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#ccff00] text-xs font-bold text-black">
+              {plan.length}
+            </span>
           </Link>
           <Link
             href="/my-plan"
-            className="rounded-full border border-zinc-500 px-3 py-1 text-xs font-bold text-white"
-            aria-label="Saved count"
+            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            aria-label={`Saved, ${saved.length} workouts`}
           >
-            Saved {saved.length}
+            <span>Saved</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-700 text-xs font-bold text-gray-300">
+              {saved.length}
+            </span>
           </Link>
         </div>
       </nav>
