@@ -59,7 +59,7 @@ export default function Navbar() {
             aria-label={`Saved, ${saved.length} workouts`}
           >
             <span>Saved</span>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-700 text-xs font-bold text-gray-300">
+            <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-zinc-400 px-2 text-xs font-bold text-zinc-200">
               {saved.length}
             </span>
           </Link>
