@@ -15,6 +15,9 @@ Tailwind CSS — a fully custom dark theme (deep surface/card backgrounds, a sin
 
 
 Key features
+
+
+
 1.Live workout library — every lift is fetched at runtime from a real external API rather than hardcoded into the app, and displayed as a sortable, searchable grid on the home page so you can find a lift by name, muscle group, duration, calories, or rating.
 
 
