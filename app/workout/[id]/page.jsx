@@ -28,12 +28,14 @@ export default function WorkoutDetailPage() {
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
+    setError(null);
+    setWorkout(null);
     getWorkoutById(id)
       .then((data) => {
         if (!cancelled) setWorkout(Array.isArray(data) ? data[0] : data);
       })
       .catch((err) => {
-        if (!cancelled) setError(err.message);
+        if (!cancelled) setError(err);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
