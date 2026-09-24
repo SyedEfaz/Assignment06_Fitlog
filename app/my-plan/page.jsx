@@ -12,11 +12,19 @@ const TABS = [
 ];
 
 export default function MyPlanPage() {
-  const { plan, saved, removeFromPlan, removeFromSaved, markDone, metrics, hydrated } =
+  const { plan, saved, removeFromPlan, removeFromSaved, markDone, hydrated } =
     usePlan();
   const [tab, setTab] = useState("plan");
 
   const activeList = tab === "plan" ? plan : saved;
+  const activeMetrics = activeList.reduce(
+    (totals, workout) => ({
+      exercises: totals.exercises + 1,
+      minutes: totals.minutes + (Number(workout.duration) || 0),
+      calories: totals.calories + (Number(workout.caloriesBurned) || 0),
+    }),
+    { exercises: 0, minutes: 0, calories: 0 }
+  );
 
   return (
     <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
@@ -28,9 +36,9 @@ export default function MyPlanPage() {
       </p>
 
       <div className="mt-6 grid grid-cols-3 gap-3">
-        <StatCard label="Exercises" value={metrics.exercises} />
-        <StatCard label="Minutes" value={metrics.minutes} />
-        <StatCard label="Calories" value={metrics.calories} />
+        <StatCard label="Exercises" value={activeMetrics.exercises} />
+        <StatCard label="Minutes" value={activeMetrics.minutes} />
+        <StatCard label="Calories" value={activeMetrics.calories} />
       </div>
 
       <div className="mt-8 flex gap-2 border-b border-line">
