@@ -50,7 +50,7 @@ export default function MyPlanPage() {
       </div>
 
       <div className="mt-6 space-y-4">
-        {!hydrated && <Loader label="Loading workouts..." />}
+        {!hydrated && <Loader label="Loading workouts…" />}
 
         {hydrated && activeList.length === 0 && <EmptyState />}
 

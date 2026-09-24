@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getWorkoutById } from "@/lib/api";
 import { usePlan } from "@/context/PlanContext";
 import Loader from "@/components/Loader";
+import NotFoundState from "@/components/NotFoundState";
 
 const SPEC_ROWS = [
   { label: "Equipment", key: "equipment" },
@@ -44,10 +45,20 @@ export default function WorkoutDetailPage() {
 
   if (loading) return <Loader label="Loading workout..." />;
 
-  if (error || !workout) {
+  if (error?.status === 404 || (!error && !workout)) {
+    return (
+      <NotFoundState
+        title="Workout not found"
+        message="That workout isn't in the library. Browse the available workouts instead."
+        href="/#library"
+      />
+    );
+  }
+
+  if (error) {
     return (
       <p className="mx-auto max-w-2xl px-4 py-20 text-center text-sm text-red-300">
-        Couldn&apos;t load this workout.
+        Couldn&apos;t load this workout. Please try again.
       </p>
     );
   }
