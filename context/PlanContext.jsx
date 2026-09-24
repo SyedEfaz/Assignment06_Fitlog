@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { toast } from "react-toastify";
 
 const PlanContext = createContext(null);
 
@@ -11,7 +12,6 @@ const PLAN_CAP = 5;
 export function PlanProvider({ children }) {
   const [plan, setPlan] = useState([]);
   const [saved, setSaved] = useState([]);
-  const [toasts, setToasts] = useState([]);
   const [hydrated, setHydrated] = useState(false);
 
   // Load persisted data on first mount
@@ -37,11 +37,7 @@ export function PlanProvider({ children }) {
   }, [saved, hydrated]);
 
   const showToast = useCallback((message) => {
-    const id = Date.now() + Math.random();
-    setToasts((t) => [...t, { id, message }]);
-    setTimeout(() => {
-      setToasts((t) => t.filter((toast) => toast.id !== id));
-    }, 2600);
+    toast(message);
   }, []);
 
   const addToPlan = useCallback(
@@ -120,7 +116,6 @@ export function PlanProvider({ children }) {
         isPlanFull,
         metrics,
         showToast,
-        toasts,
         hydrated,
       }}
     >

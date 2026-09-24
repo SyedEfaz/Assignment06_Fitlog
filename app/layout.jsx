@@ -1,4 +1,5 @@
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import { PlanProvider } from "@/context/PlanContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
