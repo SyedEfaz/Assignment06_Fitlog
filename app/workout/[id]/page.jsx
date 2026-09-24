@@ -120,8 +120,10 @@ export default function WorkoutDetailPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <button
               onClick={() => addToPlan(workout)}
-              disabled={isPlanFull}
-              className="flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold uppercase text-black disabled:cursor-not-allowed disabled:opacity-40"
+              aria-disabled={isPlanFull}
+              className={`flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold uppercase text-black ${
+                isPlanFull ? "opacity-50" : ""
+              }`}
             >
               + Add to today&apos;s plan
             </button>

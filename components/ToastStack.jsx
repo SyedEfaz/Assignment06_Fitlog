@@ -12,7 +12,7 @@ export default function ToastStack() {
           key={t.id}
           className="animate-[fadeIn_0.2s_ease-out] rounded-lg border border-line bg-card px-4 py-3 text-sm font-medium text-white shadow-lg shadow-black/40"
         >
-          <span className="mr-2 text-accent">●</span>
+          <span className="mr-2 text-accent" aria-hidden="true">●</span>
           {t.message}
         </div>
       ))}
