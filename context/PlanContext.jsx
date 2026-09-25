@@ -87,10 +87,8 @@ export function PlanProvider({ children }) {
 
   const markDone = useCallback(
     (id) => {
-      setPlan((prev) =>
-        prev.map((w) => (w.id === id ? { ...w, done: !w.done } : w))
-      );
-      showToast("Workout status updated");
+      setPlan((prev) => prev.filter((workout) => workout.id !== id));
+      showToast("Workout marked as done");
     },
     [showToast]
   );
